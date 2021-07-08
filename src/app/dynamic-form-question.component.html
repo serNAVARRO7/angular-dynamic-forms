@@ -10,6 +10,13 @@
       <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
     </select>
 
+    <div [id]="question.key" *ngSwitchCase="'rating'">
+      <div *ngFor="let opt of question.options" >
+        <input type="radio" id="html" [formControlName]="question.key" [value]="opt.value">
+        <label for="opt.key">{{opt.value}}</label><br>
+      </div>
+    </div>
+
   </div>
 
   <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>

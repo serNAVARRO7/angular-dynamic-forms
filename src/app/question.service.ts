@@ -4,6 +4,7 @@ import { DropdownQuestion } from './question-dropdown';
 import { QuestionBase } from './question-base';
 import { TextboxQuestion } from './question-textbox';
 import { of } from 'rxjs';
+import { RatingQuestion } from './question-rating';
 
 @Injectable()
 export class QuestionService {
@@ -38,7 +39,19 @@ export class QuestionService {
         label: 'Email',
         type: 'email',
         order: 2
-      })
+      }),
+
+      new RatingQuestion({
+        key: 'stars',
+        label: 'Hotel stars',
+        options: [
+          {key: 'one star',  value: '1'},
+          {key: 'two star',  value: '2'},
+          {key: 'three star',   value: '3'},
+          {key: 'four star', value: '4'}
+        ],
+        order: 4
+      }),
     ];
 
     return of(questions.sort((a, b) => a.order - b.order));
